@@ -220,7 +220,7 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: "<b>⤵️ Введите рейтинг продавца [0 - 5].\n➖➖➖➖➖\nПример:</b> <code>3.2</code>\n\n<b>Будут показаны объявления, у которых рейтинг продавца не превышает</b> <code>3.2</code><b>.</b>",
+                            caption: "<b>⤵️ Введите рейтинг продавца.\n➖➖➖➖➖\nПример:</b> <code>3.2</code> [0 - 5]\n\n<b>Будут показаны объявления, у которых рейтинг продавца не превышает</b> <code>3.2</code><b>.</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.sellerRatingKb
                         );
@@ -243,7 +243,7 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: $"<b>⤵️ Укажите дату регистрации продавца.\n➖➖➖➖➖\n✔️ Пример:</b> <code>{today.ToString("dd.MM.yyyy")}</code>\n\n<b>Будут показаны объявления, у которых продавцы зарегистрировались в промежутке [</b><code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code> - <code>{today.ToString("dd.MM.yyyy")}</code><b>].</b>",
+                            caption: $"<b>⤵️ Укажите дату регистрации продавца.\n➖➖➖➖➖\n✔️ Пример:</b> <code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code>\n\n<b>Будут показаны объявления, у которых продавцы зарегистрировались в промежутке [</b><code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code> - <code>{today.ToString("dd.MM.yyyy")}</code><b>].</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.RegDateKb()
                         );
