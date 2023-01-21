@@ -31,15 +31,15 @@ namespace Handlers
                 }
 
 
-                if(Functions.CheckSubChannel(botClient.GetChatMemberAsync(Config.workChatId, chatId).Result.Status.ToString()))
-                {
-                    await botClient.SendTextMessageAsync(
-                        chatId: chatId,
-                        text: $"<b> Для того, чтобы пользоваться ботом подайте заявку в <a href=\"https://t.me/HORDE_SQUAD_BOT\">бота</a> и вступите в чат.</b>",
-                        parseMode: ParseMode.Html
-                    );
-                    return;
-                }
+                // if(Functions.CheckSubChannel(botClient.GetChatMemberAsync(Config.workChatId, chatId).Result.Status.ToString()))
+                // {
+                //     await botClient.SendTextMessageAsync(
+                //         chatId: chatId,
+                //         text: $"<b> Для того, чтобы пользоваться ботом подайте заявку в <a href=\"https://t.me/HORDE_SQUAD_BOT\">бота</a> и вступите в чат.</b>",
+                //         parseMode: ParseMode.Html
+                //     );
+                //     return;
+                // }
 
                 switch(callbackQuery.Data)
                 {
@@ -220,7 +220,7 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: "<b>⤵️ Введите рейтинг продавца(Oт 0 до 5).\n\n✔️ Пример: </b><u>2,5</u> (парсер будет искать продавцов у которых рейтинг не будет превышать 2.5)",
+                            caption: "<b>⤵️ Введите рейтинг продавца [0 - 5].\n➖➖➖➖➖\nПример:</b> <code>3.2</code>\n\n<b>Будут показаны объявления, у которых рейтинг продавца не превышает</b> <code>3.2</code><b>.</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.sellerRatingKb
                         );
@@ -231,18 +231,19 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: "<b>⤵️ Введите количество отзывов продавца.\n\n✔️ Пример: </b><u>10</u> (парсер будет искать продавцов у которых кол-во отзывов не будет превышать 10)",
+                            caption: "<b>⤵️ Введите количество отзывов продавца.\n➖➖➖➖➖\nПример:</b> <code>10</code>\n\n<b>Будут показаны объявления, у которых кол-во отзывов продавца не превышает</b> <code>10</code><b>.</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.sellerFeedbackKb
                         );
                         return;
                     case "seller_reg":
                         DB.UpdateState(chatId, "SellerRegData");
-
+                        DateTime today = DateTime.Now;
+                        
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: "<b>⤵️ Укажите дату регистрации продавца.\n\n✔️ Пример: </b><u>01.01.2022</u> (парсер будет искать продавцов, которые зарегистрировались с 01.01.2022 по текущую дату)",
+                            caption: $"<b>⤵️ Укажите дату регистрации продавца.\n➖➖➖➖➖\n✔️ Пример:</b> <code>{today.ToString("dd.MM.yyyy")}</code>\n\n<b>Будут показаны объявления, у которых продавцы зарегистрировались в промежутке [</b><code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code> - <code>{today.ToString("dd.MM.yyyy")}</code><b>].</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.RegDateKb()
                         );
