@@ -6,7 +6,7 @@ namespace ConfigFile
     {
         public static string MenuText(long chatId)
         {
-            string text = $"<b>HORDE LITE PARSER</b>\n\n🆔 <b>ID:</b> <code>{chatId}</code>\n\n<b>🔭 Данный бот предназначен для поиска самых свежих объявлений на площадках CAROUSELL.</b>\n\n<b>По всем вопросам обращайтесь к @azshara_queen.</b>";
+            string text = $"<b>HORDE LITE PARSER</b>\n\n<b>ID:</b> <code>{chatId}</code>\n\n<b>🔭 Данный бот предназначен для поиска самых свежих объявлений на площадках CAROUSELL.</b>\n\n<b>По всем вопросам обращайтесь к @azshara_queen.</b>";
             return text;
         }
 
