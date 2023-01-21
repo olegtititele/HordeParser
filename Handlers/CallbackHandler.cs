@@ -111,7 +111,7 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: "<b>Введите ссылки через запятую для добавления в черный список.</b>",
+                            caption: "<b>Введите ссылки КАТЕГОРИЙ через запятую для добавления в черный список.</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.blacklistLinksKb
                         );
