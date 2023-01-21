@@ -31,15 +31,15 @@ namespace Handlers
                 }
 
 
-                // if(Functions.CheckSubChannel(botClient.GetChatMemberAsync(Config.workChatId, chatId).Result.Status.ToString()))
-                // {
-                //     await botClient.SendTextMessageAsync(
-                //         chatId: chatId,
-                //         text: $"<b> Для того, чтобы пользоваться ботом подайте заявку в <a href=\"https://t.me/HORDE_SQUAD_BOT\">бота</a> и вступите в чат.</b>",
-                //         parseMode: ParseMode.Html
-                //     );
-                //     return;
-                // }
+                if(Functions.CheckSubChannel(botClient.GetChatMemberAsync(Config.workChatId, chatId).Result.Status.ToString()))
+                {
+                    await botClient.SendTextMessageAsync(
+                        chatId: chatId,
+                        text: $"<b> Для того, чтобы пользоваться ботом подайте заявку в <a href=\"https://t.me/HORDE_SQUAD_BOT\">бота</a> и вступите в чат.</b>",
+                        parseMode: ParseMode.Html
+                    );
+                    return;
+                }
 
                 switch(callbackQuery.Data)
                 {
