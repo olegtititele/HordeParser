@@ -99,7 +99,7 @@ namespace Bot
 
         private static void BotOnStart(TelegramBotClient botClient)
         {
-            DB.DropUserTable();
+//             DB.DropUserTable();
             DB.CreateBlacklistLinksTable();
             DB.CreateUsersTable();
             DB.StartParsers(botClient); 
