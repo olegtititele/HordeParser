@@ -44,6 +44,10 @@ namespace Parser
                         domen = "https://www.carousell.com.hk";
                         currency = "HKD";
                         break;
+                    case "carousell.com.my":
+                        domen = "https://www.carousell.com.my/";
+                        currency = "MYR";
+                        break;
                 }
 
                 List<string> passedLinks = new List<string>();
@@ -265,7 +269,7 @@ namespace Parser
             adDescription = adDescription.Replace('<', '`').Replace('>', '`').Replace('"', '\"');
             adTitle = adTitle.Replace('<', '`').Replace('>', '`').Replace('"', '\"');
 
-            string adInfo = $"<b>📦 Название: </b><a href=\"{adLink}\">{adTitle}</a>\n<b>💲 Цена: </b>{adPrice}\n<b>🧔🏻 Продавец: </b><a href=\"{sellerLink}\">{sellerName}</a>\n<b>💠 Тип продавца: </b><code>{sellerType}</code>\n\n<b>📅 Добавлено: </b><b>{adRegDate.ToString().Split(' ')[0]}</b> {adRegDate.ToString().Split(' ')[1]}\n<b>📝 Количество объявлений: </b><code>{sellerTotalAds}</code>\n<b>📆 Дата регистрации: </b><b>{sellerRegDate.ToString("dd.MM.yyyy")}</b>\n\n<b>🌠 Рейтинг: </b><code>{sellerRating}</code>\n<b>🔢 Количество отзывов: </b><code>{sellerFeedback}</code>\n\n<b>📷 Фото: </b><code>{adImage}</code>\n\n<b>📍 Местоположение: </b>{adLocation}";
+            string adInfo = $"<b>📦 Название: </b><a href=\"{adLink}\">{adTitle}</a>\n<b>💲 Цена: </b>{adPrice}\n<b>🧔🏻 Продавец: </b><a href=\"{sellerLink}\">{sellerName}</a>\n<b>💠 Тип продавца: </b><code>{sellerType}</code>\n\n<b>📅 Добавлено: </b><b>{adRegDate.ToString().Split(' ')[0]}</b> {adRegDate.ToString().Split(' ')[1]}\n<b>📝 Количество объявлений: </b><code>{sellerTotalAds}</code>\n<b>📆 Дата регистрации: </b><b>{sellerRegDate.ToString("dd.MM.yyyy")}</b>\n\n<b>🌠 Рейтинг: </b><code>{sellerRating}</code><b>🔢 Количество отзывов: </b><code>{sellerFeedback}</code>\n\n<b>📷 Фото: </b><code>{adImage}</code>\n\n<b>📍 Местоположение: </b>{adLocation}";
 
             try
             {
@@ -292,7 +296,7 @@ namespace Parser
             {
                 await botClient.SendTextMessageAsync(
                     chatId: userId,
-                    text: $"<b>📦 Название: </b><a href=\"{adLink}\">{adTitle}</a>\n<b>💲 Цена: </b>{adPrice}\n<b>🧔🏻 Продавец: </b><a href=\"{sellerLink}\">{sellerName}</a>\n<b>💠 Тип продавца: </b><code>{sellerType}</code>\n\n<b>📅 Добавлено: </b><b>{adRegDate.ToString().Split(' ')[0]}</b> {adRegDate.ToString().Split(' ')[1]}\n<b>📝 Количество объявлений: </b><code>{sellerTotalAds}</code>\n<b>📆 Дата регистрации: </b><b>{sellerRegDate.ToString("dd.MM.yyyy")}</b>\n\n<b>🌠 Рейтинг: </b><code>{sellerRating}</code>\n<b>🔢 Количество отзывов: </b><code>{sellerFeedback}</code>\n\n<b>📷 Фото: </b>{adImage}\n\n<b>📍 Местоположение: </b>{adLocation}",
+                    text: $"<b>📦 Название: </b><a href=\"{adLink}\">{adTitle}</a>\n<b>💲 Цена: </b>{adPrice}\n<b>🧔🏻 Продавец: </b><a href=\"{sellerLink}\">{sellerName}</a>\n<b>💠 Тип продавца: </b><code>{sellerType}</code>\n\n<b>📅 Добавлено: </b><b>{adRegDate.ToString().Split(' ')[0]}</b> {adRegDate.ToString().Split(' ')[1]}\n<b>📝 Количество объявлений: </b><code>{sellerTotalAds}</code>\n<b>📆 Дата регистрации: </b><b>{sellerRegDate.ToString("dd.MM.yyyy")}</b>\n\n<b>🌠 Рейтинг: </b><code>{sellerRating}</code><b>🔢 Количество отзывов: </b><code>{sellerFeedback}</code>\n\n<b>📷 Фото: </b>{adImage}\n\n<b>📍 Местоположение: </b>{adLocation}",
                     parseMode: ParseMode.Html,
                     disableWebPagePreview: true
                 );

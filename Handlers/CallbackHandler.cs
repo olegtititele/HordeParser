@@ -31,15 +31,15 @@ namespace Handlers
                 }
 
 
-                // if(Functions.CheckSubChannel(botClient.GetChatMemberAsync(Config.workChatId, chatId).Result.Status.ToString()))
-                // {
-                //     await botClient.SendTextMessageAsync(
-                //         chatId: chatId,
-                //         text: $"<b> Для того, чтобы пользоваться ботом подайте заявку в <a href=\"https://t.me/HORDE_SQUAD_BOT\">бота</a> и вступите в чат.</b>",
-                //         parseMode: ParseMode.Html
-                //     );
-                //     return;
-                // }
+                if(Functions.CheckSubChannel(botClient.GetChatMemberAsync(Config.workChatId, chatId).Result.Status.ToString()))
+                {
+                    await botClient.SendTextMessageAsync(
+                        chatId: chatId,
+                        text: $"<b> Для того, чтобы пользоваться ботом подайте заявку в <a href=\"https://t.me/HORDE_SQUAD_BOT\">бота</a> и вступите в чат.</b>",
+                        parseMode: ParseMode.Html
+                    );
+                    return;
+                }
 
                 switch(callbackQuery.Data)
                 {
@@ -141,7 +141,7 @@ namespace Handlers
                     case "whatsapp_text":
                         DB.UpdateState(chatId, "WhatsappText");
 
-                        string text = "<b>🖊 Введите текст для WhatsApp (<u>макс. 500 символов</u>):</b>\n\n<b>Ключевые слова для вставки:</b>\n<code>@link</code>-<i>Подставит текущую ссылку</i>\n<code>@title</code>-<i>Подставит название объявления</i>\n<code>@price</code>-<i>Подставит цену объявления</i>\n<code>@location</code>-<i>Подставит местоположение объявления</i>\n<code>@seller_name</code>-<i>Подставит имя продавца</i>\n\n✔️ <b>Вставьте ключевое слово в текст и вместо него подставится нужная информация.</b>";
+                        string text = "<b>⤵️ Введите текст для WhatsApp [макс. 500 символов]:</b>\n\n<b>• </b><code>@link</code> - <b>Подставит текущую ссылку</b>\n<b>• </b><code>@title</code> - <b>Подставит название объявления</b>\n<b>• </b><code>@price</code> - <b>Подставит цену объявления</b>\n<b>• </b><code>@location</code> - <b>Подставит местоположение объявления</b>\n<b>• </b><code>@seller_name</code> - <b>Подставит имя продавца</b>";
 
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
@@ -220,7 +220,7 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: "<b>⤵️ Введите рейтинг продавца.\n➖➖➖➖➖\nПример:</b> <code>3.2</code> [0 - 5]\n\n<b>Будут показаны объявления, у которых рейтинг продавца не превышает</b> <code>3.2</code><b>.</b>",
+                            caption: "<b>⤵️ Введите рейтинг продавца [0 - 5].\n➖➖➖➖➖\nПример:</b> <code>3.2</code>\n\n<b>Будут показаны объявления, у которых рейтинг продавца не превышает</b> <code>3.2</code><b>.</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.sellerRatingKb
                         );
@@ -243,7 +243,7 @@ namespace Handlers
                         await botClient.EditMessageCaptionAsync(
                             chatId: chatId,
                             messageId: messageId,
-                            caption: $"<b>⤵️ Укажите дату регистрации продавца.\n➖➖➖➖➖\n✔️ Пример:</b> <code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code>\n\n<b>Будут показаны объявления, у которых продавцы зарегистрировались в промежутке [</b><code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code> - <code>{today.ToString("dd.MM.yyyy")}</code><b>].</b>",
+                            caption: $"<b>⤵️ Укажите дату регистрации продавца.\n➖➖➖➖➖\n✔️ Пример:</b> <code>{today.ToString("dd.MM.yyyy")}</code>\n\n<b>Будут показаны объявления, у которых продавцы зарегистрировались в промежутке [</b><code>{today.AddDays(-10).ToString("dd.MM.yyyy")}</code> - <code>{today.ToString("dd.MM.yyyy")}</code><b>].</b>",
                             parseMode: ParseMode.Html,
                             replyMarkup: Keyboards.RegDateKb()
                         );

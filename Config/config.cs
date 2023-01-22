@@ -10,6 +10,6 @@ namespace ConfigFile
         public static long[] adminChatsId = {5468787377};
         public static long workChatId = -1001649876317;
         public static CultureInfo culture = new CultureInfo("ru-RU", false);
-        public static string[] Countries = {"carousell.sg", "carousell.com.hk"};
+        public static string[] Countries = {"carousell.sg", "carousell.com.hk", "carousell.com.my"};
     }
 }
