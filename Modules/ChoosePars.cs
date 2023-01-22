@@ -24,6 +24,10 @@ namespace Modules
                     new Thread(()=>Carousell.StartParsing(botClient, chatId, DateTime.Now)).Start();
                     load.Start();
                     break;
+                case "carousell.com.my":
+                    new Thread(()=>Carousell.StartParsing(botClient, chatId, DateTime.Now)).Start();
+                    load.Start();
+                    break;
             }
         }
 
