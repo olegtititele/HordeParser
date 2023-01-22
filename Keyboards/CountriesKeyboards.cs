@@ -13,7 +13,12 @@ namespace Bot_Keyboards
                 InlineKeyboardButton.WithCallbackData(text: "🇸🇬 carousell.sg", callbackData: "carousell.sg"),
                 InlineKeyboardButton.WithCallbackData(text: "🇭🇰 carousell.com.hk", callbackData: "carousell.com.hk"),
             },
+            new []
+            {
+                InlineKeyboardButton.WithCallbackData(text: "🇲🇾 carousell.com.my", callbackData: "carousell.com.my"),
+            },
             // back btn
+            
             new []
             {
                 InlineKeyboardButton.WithCallbackData(text: "🏚 В меню", callbackData: "back_to_menu"),
