@@ -59,10 +59,11 @@ namespace Parser
                         string link = GenerateLink(parserCategory, domen, userLink);
 
                         HtmlDocument document = web.Load(link, CarousellProxy.myProxyIP, CarousellProxy.myPort, CarousellProxy.login, CarousellProxy.password);
-                        var advertisements = document.DocumentNode.SelectNodes("//div[@id=\"root\"]//a");
+                        var advertisements = document.DocumentNode.SelectNodes("//div[contains(@data-testid, 'listing-card')]//a");
 
                         foreach (HtmlNode advertisement in advertisements)
                         {
+
                             if(DB.GetParser(userId) == "Stop"){ return; }
                             
                             string ad = advertisement.GetAttributeValue("href", "");
@@ -153,14 +154,11 @@ namespace Parser
                 return;
             }
 
-
             try
             {
                 adRegDate = Convert.ToDateTime(json["Listing"]!["listingsMap"]![adId]!["last_modified"]!.ToString()).AddHours(3).AddMinutes(1);
             }
             catch{ }
-
-            if(!Functions.CheckAdRegDate(exactTime, adRegDate)){ return; }
 
             try
             {
