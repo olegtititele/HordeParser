@@ -322,7 +322,7 @@ namespace Handlers
                         {
                             await botClient.AnswerCallbackQueryAsync(
                                 callbackQueryId: callbackQuery.Id,
-                                text: "У вас уже запущен парсинг.",
+                                text: "У вас уже запущен парсинг. Для его остановки напишите Стоп.",
                                 showAlert: true
                             );
                             return;
